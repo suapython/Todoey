@@ -11,6 +11,7 @@ import UIKit
 class TodoListViewController: UITableViewController {
 
     var itemArray = [Item]()
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     
     let defaults = UserDefaults.standard
@@ -18,6 +19,11 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        
+        
+        print(dataFilePath)
+        
+        
        let newitem = Item()
         newitem.title = "Find Mike"
         itemArray.append(newitem)
@@ -59,9 +65,9 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(itemArray[indexPath.row])
         
-       itemArray[indexPath.row].done = !itemArray[indexPath.ro.done
+       itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        tableView.reloadData()
+        saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -83,9 +89,9 @@ class TodoListViewController: UITableViewController {
             
         self.itemArray.append(newItem)
             
-        self.defaults.set(self.itemArray, forKey:"ToDoListArray")
+       self.saveItems()
             
-        self.tableView.reloadData()
+            
         }
         alert.addTextField { (alertTextField) in alertTextField.placeholder = "Create new item"
             textField = alertTextField
@@ -97,8 +103,22 @@ class TodoListViewController: UITableViewController {
         present(alert, animated: true,completion:  nil)
     }
     
+
+
+func saveItems() {
+    
+    let encoder = PropertyListEncoder()
+    
+    do {
+        let data = try encoder.encode(itemArray)
+        try data.write(to: dataFilePath!)
+    } catch {
+        print("Error encoding item array ,\(error)")
+        
+    }
+    
+    
+    tableView.reloadData()
 }
 
-
-
-
+}
