@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UITableViewController {
 
     var itemArray = [Item]()
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     
     let defaults = UserDefaults.standard
@@ -19,27 +22,15 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
+       print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask) )
+        
+        print(dataFilePath!)
+        
+       
+       loadItems()
         
         
-        print(dataFilePath)
         
-        
-       let newitem = Item()
-        newitem.title = "Find Mike"
-        itemArray.append(newitem)
-        
-        let newitem2 = Item()
-        newitem2.title = "Buy eggs"
-        itemArray.append(newitem2)
-        
-        let newitem3 = Item()
-        newitem3.title = "Find car"
-        itemArray.append(newitem3)
-        
-       if let items = defaults.array(forKey: "ToDoListArray") as? [Item]
-        {
-            itemArray = items
-        }
     }
     
   //Mark -Tableview datasource methods
@@ -65,6 +56,10 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(itemArray[indexPath.row])
         
+       
+        //context.delete(itemArray[indexPath.row])
+        //itemArray.remove(at: indexPath.row)
+        
        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
         saveItems()
@@ -83,13 +78,15 @@ class TodoListViewController: UITableViewController {
         let action = UIAlertAction(title:"Add Item", style: .default) { (action) in
       //what will happer once clicks the add item button
             
-        
-        let newItem = Item()
-            newItem.title = textField.text!
             
+        let newItem = Item(context: self.context)
+        newItem.title = textField.text!
+        newItem.done = false
         self.itemArray.append(newItem)
             
-       self.saveItems()
+
+            
+        self.saveItems()
             
             
         }
@@ -107,18 +104,28 @@ class TodoListViewController: UITableViewController {
 
 func saveItems() {
     
-    let encoder = PropertyListEncoder()
+    
     
     do {
-        let data = try encoder.encode(itemArray)
-        try data.write(to: dataFilePath!)
+        try  context.save()
     } catch {
-        print("Error encoding item array ,\(error)")
+        print("Error saving context ,\(error)")
         
     }
     
     
     tableView.reloadData()
 }
+    
+    func loadItems() {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+           itemArray = try context.fetch(request)
+        }
+        catch {
+           print("Error fetching \(error)")
+        }
+    }
 
 }
+
