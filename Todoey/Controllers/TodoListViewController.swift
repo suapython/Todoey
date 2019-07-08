@@ -17,7 +17,7 @@ class TodoListViewController: UITableViewController {
     
     
     
-    let defaults = UserDefaults.standard
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class TodoListViewController: UITableViewController {
         
     }
     
-  //Mark -Tableview datasource methods
+    //MARK: -Tableview datasource methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
@@ -51,7 +51,7 @@ class TodoListViewController: UITableViewController {
         return cell
     }
     
-    //Mark -tableview delegate methods
+    //MARK: -tableview delegate methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(itemArray[indexPath.row])
@@ -70,7 +70,7 @@ class TodoListViewController: UITableViewController {
         
     }
     
-    // mark add new item
+    // MARK: add new item
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
@@ -105,8 +105,6 @@ class TodoListViewController: UITableViewController {
 
 func saveItems() {
     
-    
-    
     do {
         try  context.save()
     } catch {
@@ -131,7 +129,7 @@ func saveItems() {
     }
 
 }
-//MARK  Search bar button
+//MARK: Search bar button
 
 extension  TodoListViewController: UISearchBarDelegate {
     
