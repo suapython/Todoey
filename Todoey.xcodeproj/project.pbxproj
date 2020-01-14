@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5936244622C2D9520067C142 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5936244422C2D9520067C142 /* DataModel.xcdatamodeld */; };
+		592CFE1823CD4C0A00DCD9F7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CFE1723CD4C0A00DCD9F7 /* Item.swift */; };
+		592CFE1A23CD4D1500DCD9F7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CFE1923CD4D1500DCD9F7 /* Category.swift */; };
 		5986D51522CF0D5B00FB628A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986D51422CF0D5B00FB628A /* CategoryViewController.swift */; };
 		59FCD3AE22BBA0FE002F7481 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCD3AD22BBA0FE002F7481 /* AppDelegate.swift */; };
 		59FCD3B022BBA0FE002F7481 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FCD3AF22BBA0FE002F7481 /* TodoListViewController.swift */; };
@@ -18,7 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5936244522C2D9520067C142 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		592CFE1723CD4C0A00DCD9F7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		592CFE1923CD4D1500DCD9F7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5986D51422CF0D5B00FB628A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		59FCD3AA22BBA0FE002F7481 /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FCD3AD22BBA0FE002F7481 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +66,8 @@
 		5936241B22C051BE0067C142 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				5936244422C2D9520067C142 /* DataModel.xcdatamodeld */,
+				592CFE1923CD4D1500DCD9F7 /* Category.swift */,
+				592CFE1723CD4C0A00DCD9F7 /* Item.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -123,7 +126,6 @@
 				629AEC519B41CC78D128B4B3 /* Pods-Todoey.debug.xcconfig */,
 				A335231243100C56EE33D499 /* Pods-Todoey.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -201,15 +203,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Todoey-checkManifestLockResult.txt",
 			);
@@ -223,13 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Todoey/Pods-Todoey-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Todoey/Pods-Todoey-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Todoey/Pods-Todoey-frameworks.sh\"\n";
@@ -242,9 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				592CFE1823CD4C0A00DCD9F7 /* Item.swift in Sources */,
+				592CFE1A23CD4D1500DCD9F7 /* Category.swift in Sources */,
 				5986D51522CF0D5B00FB628A /* CategoryViewController.swift in Sources */,
 				59FCD3B022BBA0FE002F7481 /* TodoListViewController.swift in Sources */,
-				5936244622C2D9520067C142 /* DataModel.xcdatamodeld in Sources */,
 				59FCD3AE22BBA0FE002F7481 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,19 +438,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5936244422C2D9520067C142 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5936244522C2D9520067C142 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 5936244522C2D9520067C142 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 59FCD3A222BBA0FD002F7481 /* Project object */;
 }
